@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 from pathlib import Path
+st.write("Files in the current working directory:")
+st.write(os.listdir('.'))
 
 # Define the paths to the required CSV files
 tax_worksheet_url = '2024_Tax_Worksheet_CSV.csv'
