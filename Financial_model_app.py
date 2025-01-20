@@ -15,7 +15,7 @@ import os
 # -------------------------------------------------------------------------
 # 1. File Paths
 # -------------------------------------------------------------------------
-participant_data_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/participant_data.csv
+participant_data_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/participant_data.csv"
 skillset_cost_worksheet_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/Skillset_cost_worksheet_CSV.csv"
 
 output_csv_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/financial_model_plot.csv"
