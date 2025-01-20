@@ -9,9 +9,9 @@ lifestyle_decisions_url = "https://raw.githubusercontent.com/UMROTC/TrainingApps
 output_csv_url = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/participant_data.csv"
 
 # Load the data from the CSV files
-tax_data = pd.read_csv(tax_worksheet_path)
-skillset_data = pd.read_csv(skillset_cost_path)
-lifestyle_data = pd.read_csv(lifestyle_decisions_path)
+tax_data = pd.read_csv(tax_worksheet_url)
+skillset_data = pd.read_csv(skillset_cost_url)
+lifestyle_data = pd.read_csv(lifestyle_decisions_url)
 
 skillset_data["Savings During School"] = pd.to_numeric(skillset_data["Savings During School"], errors="coerce").fillna(0)
 skillset_data["Average Salary"] = pd.to_numeric(skillset_data["Average Salary"], errors="coerce").fillna(0)
