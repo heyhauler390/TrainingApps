@@ -7,7 +7,7 @@ st.write("Files in the current working directory:")
 st.write(os.listdir('.'))
 
 # Define the paths to the required CSV files
-tax_worksheet_url = '2024_Tax_Worksheet_CSV.csv'
+tax_worksheet_url = '2024_Tax_worksheet_CSV.csv'
 skillset_cost_url = 'Skillset_cost_worksheet_CSV.csv'
 lifestyle_decisions_url = 'Lifestyle_decisions_CSV.csv'
 output_csv_url = "participant_data.csv"
