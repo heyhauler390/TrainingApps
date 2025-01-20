@@ -15,11 +15,11 @@ import os
 # -------------------------------------------------------------------------
 # 1. File Paths
 # -------------------------------------------------------------------------
-participant_data_path = r"C:\Users\Jack Helmsing\Documents\Helmsing Army Documents\Recruiting\participant_data.csv"
-skillset_cost_worksheet_path = r"C:\Users\Jack Helmsing\Documents\Helmsing Army Documents\Recruiting\Skillset_cost_worksheet_CSV.csv"
+participant_data_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/participant_data.csv
+skillset_cost_worksheet_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/Skillset_cost_worksheet_CSV.csv"
 
-output_csv_path = r"C:\Users\Jack Helmsing\Documents\Helmsing Army Documents\Recruiting\financial_model_plot.csv"
-output_html_path = r"C:\Users\Jack Helmsing\Documents\Helmsing Army Documents\Recruiting\plotly_bar_chart_race.html"
+output_csv_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/financial_model_plot.csv"
+output_html_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/plotly_bar_chart_race.html"
 
 # -------------------------------------------------------------------------
 # 2. Load & Merge
