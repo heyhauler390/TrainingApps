@@ -6,7 +6,7 @@ from pathlib import Path
 tax_worksheet_url = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/2024_Tax_worksheet_CSV.csv"
 skillset_cost_url = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/Skillset_cost_worksheet_CSV.csv"
 lifestyle_decisions_url = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/Lifestyle_decisions_CSV.csv"
-output_csv_url = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/participant_data.csv
+output_csv_url = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/participant_data.csv"
 
 # Load the data from the CSV files
 tax_data = pd.read_csv(tax_worksheet_path)
