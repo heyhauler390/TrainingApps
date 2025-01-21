@@ -208,5 +208,5 @@ if participant_name and career and remaining_budget == 0:
             "Savings": [savings],
         })
         # Save the data to a CSV file
-        data.to_csv(output_csv_url, index=False, mode="a", header=not output_csv_url.exists())
+        data.to_csv("participant_data.csv", index=False, mode="a", header=not "participant_data.csv".exists())
         st.success("Your budget has been submitted!")
