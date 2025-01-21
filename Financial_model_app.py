@@ -4,28 +4,35 @@ Monthly Bar Chart Race for Net Worth
 - Play/Pause functionality (Pause truly halts the animation).
 - Cleaned up layout calls to avoid duplication.
 - Slider and play/pause buttons at the bottom of the page.
-- Debug prints removed now that the page is working correctly.
 """
 
 import pandas as pd
 import numpy as np
 import plotly.express as px
 import os
-#bill test 3
+
 # -------------------------------------------------------------------------
 # 1. File Paths
 # -------------------------------------------------------------------------
-participant_data_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/participant_data.csv"
-skillset_cost_worksheet_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/Skillset_cost_worksheet_CSV.csv"
-
-output_csv_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/financial_model_plot.csv"
-output_html_path = "https://raw.githubusercontent.com/UMROTC/TrainingApps/refs/heads/master/plotly_bar_chart_race.html"
+# File paths for local files in the repository
+participant_data_path = "participant_data.csv"
+skillset_cost_worksheet_path = "Skillset_cost_worksheet_CSV.csv"
+output_csv_path = "financial_model_plot.csv"
+output_html_path = "plotly_bar_chart_race.html"
 
 # -------------------------------------------------------------------------
 # 2. Load & Merge
 # -------------------------------------------------------------------------
-participant_df = pd.read_csv(participant_data_path)
-skill_df = pd.read_csv(skillset_cost_worksheet_path)
+# Load data from local files
+try:
+    participant_df = pd.read_csv(participant_data_path)
+    skill_df = pd.read_csv(skillset_cost_worksheet_path)
+except FileNotFoundError as e:
+    print(f"File not found: {e}")
+    exit()
+except Exception as e:
+    print(f"Error loading files: {e}")
+    exit()
 
 # Remove extra spaces in column names
 participant_df.columns = participant_df.columns.str.strip()
@@ -132,7 +139,6 @@ expanded_df['Net Worth Label'] = expanded_df['Net Worth'].apply(
 # -------------------------------------------------------------------------
 # 8. Save to CSV
 # -------------------------------------------------------------------------
-os.makedirs(os.path.dirname(output_csv_path), exist_ok=True)
 try:
     expanded_df.to_csv(output_csv_path, index=False)
     print(f"Monthly data saved to CSV at: {output_csv_path}")
@@ -175,8 +181,8 @@ for year in range(1, 26):  # 1..25 years
     slider_steps.append(dict(
         method="animate",
         label=f"Year {year}",
-        args=[
-            [f"{final_month}"],  # Target frame name
+        args=[[
+            f"{final_month}"],  # Target frame name
             {
                 "mode": "immediate",
                 "frame": {"duration": 500, "redraw": True},
@@ -209,26 +215,12 @@ play_pause_menu = dict(
         dict(
             label="Play",
             method="animate",
-            args=[
-                None,
-                {
-                    "frame": {"duration": 300, "redraw": True},
-                    "transition": {"duration": 0},
-                    "fromcurrent": True
-                }
-            ],
+            args=[None, {"frame": {"duration": 300, "redraw": True}, "transition": {"duration": 0}, "fromcurrent": True}],
         ),
         dict(
             label="Pause",
             method="animate",
-            args=[
-                [None],  # Stop animation
-                {
-                    "mode": "immediate",
-                    "frame": {"duration": 0, "redraw": False},
-                    "transition": {"duration": 0}
-                }
-            ],
+            args=[[None], {"mode": "immediate", "frame": {"duration": 0, "redraw": False}, "transition": {"duration": 0}}],
         ),
     ]
 )
@@ -254,7 +246,12 @@ fig.update_layout(
 # -------------------------------------------------------------------------
 # 13. Save & Show
 # -------------------------------------------------------------------------
-fig.write_html(output_html_path)
+try:
+    fig.write_html(output_html_path)
+    print(f"Bar chart saved to HTML at: {output_html_path}")
+except Exception as e:
+    print("Error saving HTML file:", e)
+
 fig.show()
 
 print("Script complete.")

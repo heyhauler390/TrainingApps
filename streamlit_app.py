@@ -3,9 +3,6 @@ import pandas as pd
 from pathlib import Path
 import os
 
-st.write("Files in the current working directory:")
-st.write(os.listdir('.'))
-
 # Define the paths to the required CSV files
 tax_worksheet_url = '2024_Tax_worksheet_CSV.csv'
 skillset_cost_url = 'Skillset_cost_worksheet_CSV.csv'
@@ -198,6 +195,12 @@ for category, details in selected_lifestyle_choices.items():
 # Step 6: Submit
 st.header("Step 6: Submit Your Budget")
 st.write(f"**Remaining Budget:** ${remaining_budget:,.2f}")
+from pathlib import Path
+
+# Define the path to the CSV file relative to the repository
+output_csv_url = "participant_data.csv"  # File in the same directory as your script
+output_csv_path = Path(output_csv_url)  # Convert to a Path object
+
 if participant_name and career and remaining_budget == 0:
     submit = st.button("Submit")
     if submit:
@@ -207,6 +210,6 @@ if participant_name and career and remaining_budget == 0:
             "Military Service": [selected_lifestyle_choices.get("Military Service", {}).get("Choice", "No")],
             "Savings": [savings],
         })
-        # Save the data to a CSV file
-        data.to_csv(output_csv_url, index=False, mode="a", header=not output_csv_url.exists())
+        # Append the data to the CSV file
+        data.to_csv(output_csv_path, index=False, mode="a", header=not output_csv_path.exists())
         st.success("Your budget has been submitted!")
